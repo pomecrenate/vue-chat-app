@@ -16,32 +16,32 @@
         <button type="submit" class="btn-enter">입장하기</button>
       </form>
     </div>
-  </div>
-</template>
+    </div>
+  </template>
 
-<script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useUserStore } from '../stores/user'
+  <script setup>
+  import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
+  import { useUserStore } from '../stores/user'
 
 // 라우터와 사용자 스토어 가져오기
-const router = useRouter()
+  const router = useRouter()
 const userStore = useUserStore()
-const nickname = ref('')
-
+  const nickname = ref('')
+  
 /**
  * 채팅방 입장 처리 함수
  * 사용자가 입력한 닉네임으로 로그인 처리 후 로비 페이지로 이동
  */
 function enterChat() {
-  if (nickname.value.trim()) {
+    if (nickname.value.trim()) {
     // 스토어에 사용자 정보 저장
     userStore.login(nickname.value)
     // 로비 페이지로 이동
     router.push('/lobby')
+    }
   }
-}
-</script>
+  </script>
 
 <style scoped>
 .login-container {
